@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="bean.Employee" table="Employee_Rec">
+
+<id name="id" column="Sid">
+<generator class="increment"/>
+</id>
+
+<property name="name" column="Sname"/>
+<property name="desig" column="Sdesig"/>
+<property name="salary" column="Salary"/>
+
+<joined-subclass name="bean.Emp_per_details" table="Emp_per_details">
+    <key column="id"/>
+    <property name="age" column="Sage"/>
+    <property name="city" column="Scity"/>
+    <property name="mob" column="Smob"/>
+    <property name="address" column="Saddress"/>
+    
+    <joined-subclass name="bean.Emp_tech_details" table="Emp_tech_details">
+    <key column="id"/>
+    <property name="exp" column="Exp"/>
+    <property name="qualif" column="Qualif"/>
+    
+</joined-subclass>
+</joined-subclass>
+
+
+
+</class>
+</hibernate-mapping>
